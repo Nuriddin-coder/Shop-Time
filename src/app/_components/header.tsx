@@ -40,10 +40,10 @@ export const Header = async () => {
         </div>
 
         <div className="hidden items-center gap-4 tablet:flex">
-          <p>somthing</p>
-          <p>somthing</p>
-          <p>somthing</p>
-          <p>somthing</p>
+          <p className="text-[18px] cursor-pointer text-Secondary font-medium">Contact</p>
+          <p className="text-[18px] cursor-pointer text-Secondary font-medium">Blog</p>
+          <p className="text-[18px] cursor-pointer text-Secondary font-medium">Popular Product</p>
+          <p className="text-[18px] cursor-pointer text-Secondary font-medium">Brands</p>
         </div>
 
         {/* Logo Icon for mobile */}
