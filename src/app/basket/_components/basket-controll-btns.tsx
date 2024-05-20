@@ -6,6 +6,8 @@ import { AppDispatch, RootState } from "@/redux/store";
 import { addWishlist } from "@/redux/reducers/wishlist-reducer";
 import { removeWishlist } from "@/redux/reducers/wishlist-reducer";
 import { removeProduct } from "@/redux/reducers/product-reducer";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 //// Import Icons :
 import { HeartIconSmall } from "@/assets/icons/heart-icon-small";
@@ -24,14 +26,55 @@ export const BasketControllBtns = (props: ProductVariantType) => {
 
   const addProductToWishlist = () => {
     dispatch(addWishlist(props));
+    withReactContent(Swal).fire({
+      icon: "success",
+      title: "Product Added to Wishlist",
+      toast: true,
+      position: "top-right",
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
   };
 
   const removeProductToWishlist = () => {
     dispatch(removeWishlist({ id: wishId }));
+
+    withReactContent(Swal).fire({
+      icon: "info",
+      title: "Product Deleted to Wishlist",
+      toast: true,
+      position: "top-right",
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
   };
 
   const removeProductToBasket = () => {
     dispatch(removeProduct({ id: props.id }));
+
+    withReactContent(Swal).fire({
+      icon: "info",
+      title: "Product Deleted to Basket",
+      toast: true,
+      position: "top-right",
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
   };
 
   return (

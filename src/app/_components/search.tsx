@@ -12,6 +12,7 @@ export const Search = () => {
 
   React.useEffect(() => {
     const getSearch = async () => {
+      
       try {
         const res = await fetch(
           `http://135.181.108.207/product_variant/?search=${name}`,
@@ -25,7 +26,9 @@ export const Search = () => {
         console.log(error);
       }
     };
-    getSearch();
+    if(name.length > 1){
+      getSearch()
+    }
   }, [name]);
 
   return (

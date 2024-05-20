@@ -92,7 +92,7 @@ const config = {
     },
     gridTemplateColumns: {
       columnForMobile: "repeat(auto-fit, minmax(140px, 1fr))",
-      columnForDesktop: "repeat(auto-fit, minmax(200px, 2fr))",
+      columnForDesktop: "repeat(auto-fit, minmax(220px, 2fr))",
     },
   },
   plugins: [require("tailwindcss-animate")],

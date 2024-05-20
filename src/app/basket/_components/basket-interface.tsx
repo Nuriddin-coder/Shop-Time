@@ -1,12 +1,12 @@
 "use client";
-import { AppDispatch, RootState } from "@/redux/store";
+import { RootState } from "@/redux/store";
 import React from "react";
 import { useSelector } from "react-redux";
-import { removeProduct } from "@/redux/reducers/product-reducer";
-import { useDispatch } from "react-redux";
 import { useSession } from "next-auth/react";
 import { BasketControllBtns } from "./basket-controll-btns";
 import { Calculate } from "./calculate";
+import { ModalForBuy } from "./modal-for-buy";
+import Link from "next/link";
 
 const BasketInterface = () => {
   const { products, totalPrice } = useSelector(
@@ -14,11 +14,6 @@ const BasketInterface = () => {
   );
 
   const session = useSession();
-  const dispatch = useDispatch<AppDispatch>();
-
-  const removeProductToBasket = (id: number) => {
-    dispatch(removeProduct({ id }));
-  };
 
   return (
     <div className="gap-[150px] desktop:flex">
@@ -79,14 +74,17 @@ const BasketInterface = () => {
           </span>
         </h1>
 
-        {session.status === "authenticated" ? (
-          <button className="mt-2 rounded-lg bg-Primary px-[40px] py-2 text-white desktop:mt-4">
-            Buy Now
-          </button>
+        {session.status === "authenticated" && products.length ? (
+          <div className="mt-4 duration-200 hover:scale-105">
+            <Link
+              href="/order"
+              className=" rounded-lg bg-Primary px-[40px] py-2 text-white desktop:mt-4"
+            >
+              Buy Now
+            </Link>
+          </div>
         ) : (
-          <button className="bg-ClrDisable mt-2 rounded-lg px-[40px] py-2 text-Secondary desktop:mt-4">
-            Buy Now
-          </button>
+          <ModalForBuy />
         )}
       </div>
     </div>

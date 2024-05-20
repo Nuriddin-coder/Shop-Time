@@ -1,5 +1,5 @@
 "use server";
-import { GetBannerType, ProductVariantType } from "./types";
+import { BrandType, GetBannerType, ProductVariantType } from "./types";
 import { CategoryType } from "./types";
 import { CategoryByIDType } from "./types";
 import { SubCategoryType } from "./types";
@@ -71,24 +71,6 @@ const getSubCategory = async () => {
 
 export { getSubCategory };
 
-{
-  /* Product Fetching: */
-}
-const getProduct = async (id: number) => {
-  try {
-    const res = await fetch(`${url}/product_variant/?product__category=${id}`, {
-      next: { revalidate: 60 },
-    });
-    const data: ProductType = await res.json();
-
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export { getProduct };
-
 const getProductVariant = async (id: number) => {
   try {
     const res = await fetch(`${url}/product_variant/${id}/`, {
@@ -117,16 +99,30 @@ const getAttributeValue = async (id: number) => {
 
 export { getAttributeValue };
 
-const getProductVariantSearch = async (name: string) => {
+const getProductVariantAll = async () => {
   try {
-    const res = await fetch(`${url}/product_variant/?search=${name}`, {
+    const res = await fetch(`${url}/product_variant/`, {
       next: { revalidate: 60 },
     });
-    const data = await res.json();
+    const data: ProductType = await res.json();
     return data;
   } catch (error) {
     console.log(error);
   }
 };
 
-export { getProductVariantSearch };
+export { getProductVariantAll };
+
+const getBrand = async () => {
+  try {
+    const res = await fetch(`${url}/brand/`, {
+      next: { revalidate: 60 },
+    });
+    const data: BrandType = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getBrand };

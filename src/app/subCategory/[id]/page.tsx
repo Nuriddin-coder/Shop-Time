@@ -21,7 +21,7 @@ const SubCategoryPage = async ({ params }: { params: { id: string } }) => {
       <div>
         <Suspense fallback={<LoadingSpinner />}>
           <div>
-            {categoryByIDdata?.children.length ? (
+            {categoryByIDdata?.children?.length ? (
               <SubCategoryCard subData={categoryByIDdata} />
             ) : (
               <h1 className="mt-[70px] text-center text-[32px] text-Secondary tablet:mt-[200px] tablet:text-[42px]">

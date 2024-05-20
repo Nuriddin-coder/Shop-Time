@@ -1,5 +1,5 @@
 "use client";
-import { loadState } from "@/lib/storage";
+import { loadState, saveState } from "@/lib/storage";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { ProductVariantType } from "@/service/types";
@@ -122,10 +122,24 @@ export const productSlice = createSlice({
         totalPrice: state.products.reduce((a, b) => a + b.userPrice, 0),
       };
     },
+
+    cleareProduct: () => {
+      return {
+        products: [],
+        totalPrice: 0,
+        count: 0,
+      };
+    },
   },
 });
 
 export const productReducerSlice = productSlice.reducer;
 
-export const { addProduct, removeProduct, toggleAmount, totalPrice, setCount } =
-  productSlice.actions;
+export const {
+  addProduct,
+  removeProduct,
+  cleareProduct,
+  toggleAmount,
+  totalPrice,
+  setCount,
+} = productSlice.actions;

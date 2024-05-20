@@ -31,6 +31,7 @@ export const store = configureStore({
     defaultMiddleware().prepend(storageMiddleware.middleware),
 });
 
+
 store.subscribe(() => {
   saveState("product", store.getState().productData);
   saveState("wishlist", store.getState().wishlistData);

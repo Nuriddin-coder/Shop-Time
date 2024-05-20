@@ -1,15 +1,12 @@
 "use client";
 import React from "react";
-import { SubCategoryType } from "@/service/types";
+import { ProductType } from "@/service/types";
 import Slider from "react-slick";
 
 //// Import Icons;
 import { SubLeftArrowIcon } from "@/assets/icons/sub-left-arrow-icon";
 import { SubRightArrowIcon } from "@/assets/icons/sub-right-arrow-icon";
 import Link from "next/link";
-interface Props {
-  subData?: SubCategoryType;
-}
 
 function SampleNextArrow(props: any) {
   const { onClick } = props;
@@ -35,7 +32,7 @@ function SamplePrevArrow(props: any) {
   );
 }
 
-export const SubCategory = ({ subData }: Props) => {
+export const ProductsMain = ({ productData }: { productData?: ProductType }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -72,19 +69,22 @@ export const SubCategory = ({ subData }: Props) => {
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        {subData?.results?.map((item) => (
+        {productData?.results?.map((item) => (
           <Link
-            href={`/subCategory/${item?.id}`}
+            href={`/productDetail/${item.id}`}
             key={item.id}
-            className="group relative h-[120px] max-w-[150px] cursor-pointer rounded-xl  bg-white py-2 text-center duration-200 hover:bg-Primary mobileSecond:max-w-[180px] tablet:max-w-[210px] desktop:h-[130px] desktop:max-w-[250px]"
+            className="group relative h-[150px] max-w-[160px] cursor-pointer rounded-xl bg-white py-2  text-center duration-200 hover:bg-Primary mobileSecond:max-w-[180px] tablet:h-[200px] tablet:max-w-[210px] tablet:pt-3 desktop:h-[220px] desktop:max-w-[250px]"
           >
             <img
-              className="mx-auto h-[70px] w-[70px] rounded-full bg-transparent"
-              src={item.image}
+              className="mx-auto h-[80px] w-[100px] rounded-lg bg-transparent tablet:h-[100px] tablet:w-[140px]"
+              src={item.images[0].image}
               alt="img"
             />
-            <p className="pt-3 text-[12px] group-hover:text-white desktop:text-[18px]">
-              {item.title}
+            <p className="pt-3 text-[12px] group-hover:text-white tablet:pt-4 tablet:text-[16px] desktop:text-[18px]">
+              {item.title.slice(0, 16)}...
+            </p>
+            <p className="text-[14px] font-semibold text-Secondary group-hover:text-white tablet:mt-2 tablet:text-[16px] desktop:text-[18px]">
+              $ {item.price}
             </p>
           </Link>
         ))}

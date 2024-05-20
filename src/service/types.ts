@@ -96,3 +96,14 @@ export interface ProductVariantType {
   userCount: number;
   userPrice: number;
 }
+
+export interface BrandType {
+  count: number;
+  next: null;
+  previous: null;
+  results: {
+    id: number;
+    title: string;
+    image: string;
+  }[];
+}
