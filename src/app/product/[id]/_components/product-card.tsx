@@ -16,9 +16,8 @@ import { DeleteItemIcon } from "@/assets/icons/delete-item-icon";
 import { AddBagIcon } from "@/assets/icons/add-bag-icon";
 import { EyeIcon } from "@/assets/icons/eye-icon";
 import { ActiveHeartSmallIcon } from "@/assets/icons/active-heart-small-icon";
-import { ProductVariantType } from "@/service/types";
 
-export const ProductCard: React.FC<ProductVariantType> = (props) => {
+export const ProductCard = (props: any) => {
   const id = props.id;
 
   const [changeBasketValue, setChangeBasketValue] = React.useState(false);

@@ -62,7 +62,7 @@ export const productSlice = createSlice({
 
     removeProduct: (
       state: StateProps,
-      action: PayloadAction<{ id: number }>,
+      action: PayloadAction<{ id: number | undefined }>,
     ) => {
       const newProducts = state.products.filter(
         (i) => i.id !== action.payload.id,

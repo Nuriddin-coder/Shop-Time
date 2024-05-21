@@ -21,7 +21,6 @@ export const WishlistCard = (props: ProductVariantType) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const { products } = useSelector((state: RootState) => state.productData);
-  const { wishlist } = useSelector((state: RootState) => state.wishlistData);
 
   const [addWish, setAddWish] = React.useState(false);
 

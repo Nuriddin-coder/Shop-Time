@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
 import { CategoryByIDType } from "@/service/types";
-import { RightArrowIcon } from "@/assets/icons/right-arrow-icon";
 import Link from "next/link";
-import Image from "next/image";
 
 interface SubCategoryCardProps {
   subData?: CategoryByIDType;

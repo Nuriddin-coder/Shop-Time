@@ -32,7 +32,9 @@ export const AccardionCategory: React.FC<CategoryProps> = ({
     <div>
       <Accordion
         type="single"
+        //@ts-ignore
         value={open}
+        //@ts-ignore
         onValueChange={setOpen}
         collapsible
         className="mx-auto w-[280px]"

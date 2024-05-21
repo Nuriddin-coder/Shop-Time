@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 //// Import Icons :
 import { WishlistCard } from "./wishlist-card";
-import { Heading1 } from "lucide-react";
 
 const WishlistProducts = () => {
   const { wishlist } = useSelector((state: RootState) => state.wishlistData);

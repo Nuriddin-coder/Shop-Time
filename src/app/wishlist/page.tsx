@@ -1,4 +1,3 @@
-import { Skeleton } from "@/components/ui/skeleton";
 import dynamic from "next/dynamic";
 import React from "react";
 import { LoadingSpinner } from "../_components/loading-spinner";
